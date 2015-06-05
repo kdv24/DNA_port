@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the AjaxNewsBundle feature.
+ */
+
+include_once 'ajaxnewsbundle.features.inc';
