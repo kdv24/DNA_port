@@ -1,0 +1,29 @@
+<?php
+function DNAmodule_menu() {
+  $items['DNA'] = array(
+    'title' => 'Swap Your DNA',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('DNA_form'),
+    'access callback' => TRU,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+//makes form with input fields and submit
+function DNA_form() {
+  $form['helix'] = array(
+    '#title' => t('Helix'),
+    '#type' => 'textfield',
+    '#description' => t('Enter your strand of DNA- it can be any combination of A T C G'),
+    '#element_validate' => array('element_validate_helix'),
+    '#required' => TRUE,
+  );
+
+
+}
+
+function element_validate_helix($element) {
+  if ($element !== A || C || T || G),
+    form_error($element, t('You must use only the letters A T C G'));
+}
