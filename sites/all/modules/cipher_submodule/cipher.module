@@ -1,0 +1,115 @@
+<?php
+
+function cipher_menu() {
+    $items['cipher'] = array(
+        'title' => 'Cipher-izer',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('cipher_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['cipher-success'] = array(
+        'title' => 'Results',
+        'page callback' => 'cipher_results',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+//creates form with input fields and submit button
+function cipher_form() {
+    //validate only letters, spaces, and punctutation- change input to lowercase
+    $form['phrase'] = array(
+        '#title' => t('Phrase'),
+        '#type' => 'textfield',
+        '#description' => t('Please enter your sentence to be cipher-ized'),
+        '#element_validate' => array('element_validate_string'),
+        '#required' => TRUE,
+    );
+
+    //validates positive integer
+    $form['shift_value'] = array(
+        '#title' => t('Number to shift'),
+        '#type' => 'textfield',
+        '#description' => t('Enter a number.'),
+        '#element_validate' => array('element_validate_integer_positive'),
+        '#required' => TRUE,
+    );
+
+    //validate left or right
+    $form['shift_direction'] = array(
+        '#title' => t('Shift direction'),
+        '#type' => 'select',
+        '#default_value' => ['shift_direction'],
+        '#description' => t('Choose whether you would like to cipher to the left or right'),
+        '#options' => array(
+            'right' => 'Right',
+            'left' => 'Left',
+        ),
+        '#required' => TRUE,
+    );
+
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Cipher-ize!'),
+    );
+    return $form;
+}
+
+//form submission- dictates what to do with input and where to redirect
+function cipher_form_submit($form, &$form_state) {
+
+    $alphabet_array = array(
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+
+//assigns variable names to user input
+    $phrase = $form_state['values']['phrase'];
+    $shift_value = $form_state['values']['shift_value'];
+    $shift_direction = $form_state['values']['shift_direction'];
+
+//creates array of separate lowercase letters including spaces and punctuation
+    $phrase = strtolower($phrase);
+    $phrase_array = str_split($phrase);
+
+    if ($shift_direction == 'left'){
+        $alphabet_array = array_reverse($alphabet_array);
+    }
+
+    $output = '';
+
+//gets name of each letter in phrase array
+    foreach($phrase_array as $phrase_letter){
+        //compares the letter in the array to the letter key in alphabet array
+        if(in_array($phrase_letter, $alphabet_array)){
+            $phrase_letter_index = array_search($phrase_letter, $alphabet_array);
+            $output .= $alphabet_array[($phrase_letter_index + $shift_value) % 26];
+        } else {
+            //allows return of spaces and punctutation without conversion
+            $output .= $phrase_letter;
+        }
+    }
+            
+    $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
+    $_SESSION['output'] = $output;
+
+    $form_state['redirect'] = "cipher-success";
+}
+
+//displays user input
+function cipher_results() {
+    $input = $_SESSION['user_input'];
+    $output = $_SESSION['output'];
+    return "<strong>Your input was: </strong>" . $input[0] . "</br> <strong>Your new sentence is: </strong>" . $output;
+}
+
+//validation
+function element_validate_string($element) {
+    if(preg_match('/[^a-zA-Z ,.?!\']/', $element['#value'])) {
+        form_error($element, t('Only letters and spaces are accepted.'));
+    }
+}
+
+
+
+
