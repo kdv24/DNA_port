@@ -1,5 +1,5 @@
 name = Bakery User
 description = Handles custom user login tasks for Cameron's Bakery.
-package = Epicodus Examples
+package = Custom
 core = 7.x
 files[] = bakery_user.module
