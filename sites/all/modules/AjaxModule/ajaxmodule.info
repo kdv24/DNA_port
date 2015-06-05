@@ -1,0 +1,5 @@
+name = Ajax node loader
+description = Display Nodes with Ajax.
+package = Custom
+core = 7.x
+files[] = ajaxmodule.module
