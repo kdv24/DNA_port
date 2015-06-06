@@ -22,7 +22,7 @@ function DNA_form() {
     '#title' => t('Helix'),
     '#type' => 'textfield',
     '#description' => t('Enter your strand of DNA- it can be any combination of A T C G'),
-    '#element_validate' => array('element_validate_helix'),
+    // '#element_validate' => array('element_validate_helix'),
     '#required' => TRUE,
   );
   $form ['submit'] = array(
@@ -48,12 +48,13 @@ function DNA_form_submit($form, &$form_state) {
       $input_letter_index = array_search($input_letter, $DNA_array);
       $output .= $DNA_array($input_letter[$value]);
     }
-  }
 
-  $_SESSION['user_input'] = $input_array;
+  $_SESSION['user_input'] = $input;
   $_SESSION['output'] = $output;
 
   $form_state['redirect'] = "DNA-Success";
+}
+  
 
 function DNA_results() {
   $input = $_SESSION['user_input'];
@@ -61,8 +62,8 @@ function DNA_results() {
   return "<strong> Your input was: </strong>" . $input[0] . "</br> <strong>The flipside of your DNA is: </strong>" . $output;
 }
 
-function element_validate_helix($element) {
-  if(preg_match('/[^ACGT ]/', $element['#value'])) {
-    form_error($element, t('You must use only the letters A T C G'));
-  }
-}
+// function element_validate_helix($element) {
+//   if(preg_match('/[^ACGT ]/', $element['#value'])) {
+//     form_error($element, t('You must use only the letters A T C G'));
+//   }
+// }
