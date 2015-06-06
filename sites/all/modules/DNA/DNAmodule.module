@@ -4,7 +4,7 @@ function DNAmodule_menu() {
     'title' => 'Swap Your DNA',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('DNA_form'),
-    'access callback' => TRU,
+    'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
   );
   $items['DNA-Success'] = array(
@@ -54,7 +54,7 @@ function DNA_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = "DNA-Success";
 }
-  
+
 
 function DNA_results() {
   $input = $_SESSION['user_input'];
