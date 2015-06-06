@@ -32,25 +32,30 @@ function DNA_form() {
   return $form;
 }
 
-function DNA_form_submit($form, &$form_state) {
-    $DNA_array = array(
-      'A' => 'T',
-      'C' => 'G',
-      'T' => 'A',
-      'G' => 'C',);
+function DNA_conversion($input) {
+  $DNA_array = array(
+    'A' => 'T',
+    'C' => 'G',
+    'T' => 'A',
+    'G' => 'C',);
 
-    $input = $form_state['values']['helix'];
-
-    $input = strtoupper($input);
-    $input_array = str_split($input);
-    $output = '';
-    foreach($input_array as $input_letter){
-      $input_letter_index = array_search($input_letter, $DNA_array);
-      $output .= $DNA_array($input_letter[$value]);
+  $input = strtoupper($input);
+  $input_array = str_split($input);
+  $output = '';
+  foreach($input_array as $input_letter){
+    $input_letter_index = [array_search($input_letter, $DNA_array)];
+    $output .= $input_letter_index[$value];
+    $output .= $input_letter_index[$value];
     }
+  return $output;
+}
+
+function DNA_form_submit($form, &$form_state) {
+  $input = $form_state['values']['helix'];
+  $result = DNA_conversion($input);
 
   $_SESSION['user_input'] = $input;
-  $_SESSION['output'] = $output;
+  $_SESSION['output'] = $result;
 
   $form_state['redirect'] = "DNA-Success";
 }
