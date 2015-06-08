@@ -1,0 +1,17 @@
+name = Book View
+description = Groups book reviews for viewing
+core = 7.x
+package = Features
+version = 7.x-2.0
+project = book_view
+dependencies[] = book_review
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[menu_custom][] = main-menu
+features[menu_links][] = main-menu_book-reviews:book-reviews
+features[menu_links][] = navigation_book-review:node/add/book-review
+features[views_view][] = book_reviews
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][menu] = menu
