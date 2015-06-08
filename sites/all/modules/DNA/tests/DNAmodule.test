@@ -1,0 +1,67 @@
+<?php
+//UNIT
+class DNAUnitTests extends DrupalUnitTestCase{
+
+  public static function getInto() {
+    return array(
+      'name' => 'DNA Unit Tests',
+      'description' => 'Tests DNA_conversion function',
+      'group' => 'DNA Module Tests',
+    );
+  }
+
+  //test one letter
+  function testInputA() {
+    //Arrange
+    $input = "A";
+
+    //Act
+    $result = DNA_conversion($input);
+
+    //Assert
+    $this->assertEqual($result, "T")
+
+  }
+
+  //test two letters
+
+  //test three letters
+
+  //test four letters
+}
+
+// //FUNCTIONAL
+// class DNATests extends DrupalWebTestCase {
+//
+//     public static function getInfo() {
+//         return array (
+//         'name' => 'DNA Tests',
+//         'description' => 'Tests the DNA module.',
+//         'group' => 'DNA Module Tests',
+//         );
+//     }
+//
+//     public function setUp() {
+//
+//         parent::setUp(array('DNA'));
+//
+//
+//         $info = array();
+//         $info['title'] = 'Helix';
+//         $info["body[und][0][value]"] = 'Enter your strand of DNA- it can be any combination of A T C G';
+//
+//         //save the new page
+//         $this->drupalPost('node/add/page', $info, t('Save'));
+//
+//         //set new page to the correct path.
+//         $path['source'] = 'node/1';
+//         $path['alias'] = '????';
+//         path_save($path);
+//
+//     }
+//
+//     public function testDNATest(){
+//         $this->drupalGet('DNA_success');
+//         $this->assertText('Helix', 'Enter your strand of DNA- it an be any combination of A T C G');
+//     }
+// }
