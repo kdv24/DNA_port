@@ -38,14 +38,14 @@ function DNA_conversion($input) {
     'C' => 'G',
     'T' => 'A',
     'G' => 'C',);
+  $output = '';
 
   $input = strtoupper($input);
   $input_array = str_split($input);
-  $output = '';
+
   foreach($input_array as $input_letter){
-    $input_letter_index = [array_search($input_letter, $DNA_array)];
     $output .= $input_letter_index[$value];
-    $output .= $input_letter_index[$value];
+    $output .= $DNA_array[$input_letter];
     }
   return $output;
 }
@@ -64,7 +64,7 @@ function DNA_form_submit($form, &$form_state) {
 function DNA_results() {
   $input = $_SESSION['user_input'];
   $output = $_SESSION['output'];
-  return "<strong> Your input was: </strong>" . $input[0] . "</br> <strong>The flipside of your DNA is: </strong>" . $output;
+  return "<strong> Your input was: </strong>" . $input . "</br> <strong>The flipside of your DNA is: </strong>" . $output;
 }
 
 // function element_validate_helix($element) {

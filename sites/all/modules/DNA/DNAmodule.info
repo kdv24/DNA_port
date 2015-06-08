@@ -3,3 +3,5 @@ description = creates form for generating DNA opposite pair
 package = custom
 core = 7.x
 files[] = DNAmodule.module
+files[] = DNAmodule.test
+dependencies = simpletest
