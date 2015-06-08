@@ -22,7 +22,7 @@ function DNA_form() {
     '#title' => t('Helix'),
     '#type' => 'textfield',
     '#description' => t('Enter your strand of DNA- it can be any combination of A T C G'),
-    // '#element_validate' => array('element_validate_helix'),
+    '#element_validate' => array('element_validate_helix'),
     '#required' => TRUE,
   );
   $form ['submit'] = array(
@@ -66,8 +66,8 @@ function DNA_results() {
   return "<strong> Your input was: </strong>" . $input . "</br> <strong>The flipside of your DNA is: </strong>" . $output;
 }
 
-// function element_validate_helix($element) {
-//   if(preg_match('/[^ACGT ]/', $element['#value'])) {
-//     form_error($element, t('You must use only the letters A T C G'));
-//   }
-// }
+function element_validate_helix($element) {
+  if(preg_match('/[^actg ACGT ]/', $element['#value'])) {
+    form_error($element, t('You must use only the letters A T C G'));
+  }
+}

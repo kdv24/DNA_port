@@ -1,8 +1,8 @@
 <?php
 //UNIT
-class DNAUnitTests extends DrupalUnitTestCase{
+class testDNAUnitTests extends DrupalUnitTestCase {
 
-  public static function getInto() {
+  public static function getInfo() {
     return array(
       'name' => 'DNA Unit Tests',
       'description' => 'Tests DNA_conversion function',
@@ -19,18 +19,47 @@ class DNAUnitTests extends DrupalUnitTestCase{
     $result = DNA_conversion($input);
 
     //Assert
-    $this->assertEqual($result, "T")
-
+    $this->assertEqual($result, "T");
   }
 
   //test two letters
+  function testInputAC() {
+    //Arrange
+    $input = "AC";
+
+    //Act
+    $result = DNA_conversion($input);
+
+    //Assert
+    $this->assertEqual($result, "TG");
+  }
 
   //test three letters
+  function testInputAC() {
+    //Arrange
+    $input = "ACT";
+
+    //Act
+    $result = DNA_conversion($input);
+
+    //Assert
+    $this->assertEqual($result, "TGA");
+  }
 
   //test four letters
+  function testInputAC() {
+    //Arrange
+    $input = "ACTG";
+
+    //Act
+    $result = DNA_conversion($input);
+
+    //Assert
+    $this->assertEqual($result, "TGAC");
+  }
 }
 
-// //FUNCTIONAL
+// //FUNCTIONAL-
 // class DNATests extends DrupalWebTestCase {
 //
 //     public static function getInfo() {
