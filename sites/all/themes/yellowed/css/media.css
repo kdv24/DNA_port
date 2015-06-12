@@ -19,7 +19,7 @@
       padding: 5px;
       width: 18%;
     }
-}    
+}
   @media screen and (max-width: 960px) {
 
     .content-sidebar-wrap,
@@ -72,7 +72,7 @@
     #site-title,
     #site-description {
       float: none;
-      margin: 0;  
+      margin: 0;
       line-height: 1.62em;
     }
 
@@ -267,18 +267,18 @@
         width: 100%
       }
     }
-    
+
     .block > h2 {
       font-size: 18px;
     }
   }
   @media screen and (max-width: 400px) {
-  
+
   .two .column img {
     width: 100% !important;
   }
   #footer .column img {
     width: 100% !important;
   }
-  
+
   }

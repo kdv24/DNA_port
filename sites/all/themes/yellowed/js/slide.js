@@ -12,6 +12,7 @@ attach: function (context, settings) {
       slideshow: true,
       controlNav: true,
       smoothHeight: true,
+      smoothWidth: true,
       start: function(slider) {
         slider.container.click(function(e) {
           if(!slider.animating) {

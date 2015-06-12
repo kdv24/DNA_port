@@ -553,10 +553,10 @@ background: url("../images/google_hover.png") no-repeat scroll center center tra
     margin: 0 auto;
     max-width: 1000px;
     text-align:center;
-   
+
 }
-.social-wrapper .social{ 
-	margin:0px auto; 
+.social-wrapper .social{
+	margin:0px auto;
 	float:none;
 	 display: inline-block;
 }
@@ -634,6 +634,7 @@ background: url("../images/google_hover.png") no-repeat scroll center center tra
 .flex-control-nav {
   margin: 0;
   padding: 0;
+  padding-left: 50px;
   list-style: none;
 }
 
@@ -737,7 +738,7 @@ background: url("../images/google_hover.png") no-repeat scroll center center tra
     position: absolute;
     max-width: 1000px;
     min-width:10%;
-    
+
 }
 
 #slider .post {
@@ -961,7 +962,7 @@ input.form-checkbox, input.form-radio {
 }
 
 /*-------------------------------------------*
-/* Menus and item lists 
+/* Menus and item lists
 /*-------------------------------------------*/
 .item-list ul {
   margin: 0;
@@ -1376,7 +1377,7 @@ fieldset .fieldset-description {
   font-style: italic;
 }
 
-input { 
+input {
   margin: 2px 0;
   padding: 4px;
 }
@@ -1517,12 +1518,12 @@ input[type="button"]:hover {
 }
 
 #search-block-form .form-actions{
-  float: left; 
-  padding: 0; 
+  float: left;
+  padding: 0;
 }
 
 #search-block-form .form-actions input {
-  margin: 1px 0; 
+  margin: 1px 0;
 }
 
 #search-form .form-item-keys label {
